@@ -61,7 +61,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="Appx.config" />
     <None Include="AppExample.config" />
     <None Include="packages.config" />
     <None Include="Service References\AgressoUserAdministrationServiceReference\AnsattAdapterAgresso.AgressoUserAdministrationServiceReference.AboutResponse.datasource">
