@@ -8,12 +8,10 @@ namespace AnsattAdapterAgresso
 {
     public class Program
     {
-
-
         static void Main(string[] args)
         {
             
-            Console.WriteLine("Hei hei:)");
+            Console.WriteLine("AnsattAdapterAgresso.");
             Console.ReadLine();
         }
     }
