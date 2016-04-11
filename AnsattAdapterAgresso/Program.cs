@@ -12,8 +12,8 @@ namespace AnsattAdapterAgresso
 
         static void Main(string[] args)
         {
-
-            Console.WriteLine("Hei:)");
+            
+            Console.WriteLine("Hei hei:)");
             Console.ReadLine();
         }
     }
