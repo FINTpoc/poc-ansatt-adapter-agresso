@@ -1,22 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
 using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
 using AnsattAdapterAgresso.AgressoUserAdministrationServiceReference;
 
-namespace AnsattAdapterAgresso
+namespace AnsattAdapterAgresso.AgressoController
 {
-    public class Controller : IDisposable
+    public class AgressoController : IDisposable
     {
         private readonly string _agressoClient;
         private readonly string _agressoPassword;
         private readonly string _agressoUsername;
         private UserAdministrationV200702SoapClient _client;
         
-        public Controller()
+        public AgressoController()
         {
             _agressoClient = ConfigurationManager.AppSettings["AgressoUserAdministrationClient"];
             _agressoUsername = ConfigurationManager.AppSettings["AgressoUserAdministrationUsername"];
@@ -36,6 +32,16 @@ namespace AnsattAdapterAgresso
         public string GetAgressoClient()
         {
             return _agressoClient;
+        }
+
+        public DateTime GetAgressoDateMin()
+        {
+            return new DateTime(1753, 1, 1);
+        }
+
+        public DateTime GetAgressoDateMax()
+        {
+            return new DateTime(9999, 12, 31);
         }
 
         public void Dispose()
