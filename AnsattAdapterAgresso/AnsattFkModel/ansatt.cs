@@ -20,8 +20,9 @@ using System.Xml.Serialization;
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-[System.Xml.Serialization.XmlRootAttribute(Namespace="", IsNullable=false)]
-public partial class ansatt : person {
+[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://fk.no/ansatt/1.0")]
+[System.Xml.Serialization.XmlRootAttribute(Namespace="http://fk.no/ansatt/1.0", IsNullable=false)]
+public partial class Ansatt : Person {
     
     private string avdelingField;
     
@@ -38,134 +39,47 @@ public partial class ansatt : person {
 }
 
 /// <remarks/>
-[System.Xml.Serialization.XmlIncludeAttribute(typeof(ansatt))]
+[System.Xml.Serialization.XmlIncludeAttribute(typeof(Ansatt))]
 [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.81.0")]
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-public partial class person : aktor {
-    
-    private System.DateTime dodsdatoField;
-    
-    private bool dodsdatoFieldSpecified;
-    
-    private landkode dodslandField;
-    
-    private bool dodslandFieldSpecified;
-    
-    private string dodsstedField;
-    
-    private string fodestedField;
-    
-    private System.DateTime fodselsdatoField;
-    
-    private bool fodselsdatoFieldSpecified;
+[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://skate.no/aktor/1.0")]
+public partial class Person : Aktor {
     
     private string fulltNavnField;
+    
+    private Personnavn navnField;
     
     private kjonn kjonnField;
     
     private bool kjonnFieldSpecified;
     
-    private personnavn navnField;
+    private landkode statsborgerskapField;
     
-    private personnavn opprinneligNavnField;
+    private bool statsborgerskapFieldSpecified;
+    
+    private System.DateTime fodselsdatoField;
+    
+    private bool fodselsdatoFieldSpecified;
+    
+    private string fodestedField;
+    
+    private System.DateTime dodsdatoField;
+    
+    private bool dodsdatoFieldSpecified;
+    
+    private string dodsstedField;
+    
+    private landkode dodslandField;
+    
+    private bool dodslandFieldSpecified;
     
     private sivilstand sivilstandField;
     
     private bool sivilstandFieldSpecified;
     
-    private landkode statsborgerskapField;
-    
-    private bool statsborgerskapFieldSpecified;
-    
-    /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-    public System.DateTime dodsdato {
-        get {
-            return this.dodsdatoField;
-        }
-        set {
-            this.dodsdatoField = value;
-        }
-    }
-    
-    /// <remarks/>
-    [System.Xml.Serialization.XmlIgnoreAttribute()]
-    public bool dodsdatoSpecified {
-        get {
-            return this.dodsdatoFieldSpecified;
-        }
-        set {
-            this.dodsdatoFieldSpecified = value;
-        }
-    }
-    
-    /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-    public landkode dodsland {
-        get {
-            return this.dodslandField;
-        }
-        set {
-            this.dodslandField = value;
-        }
-    }
-    
-    /// <remarks/>
-    [System.Xml.Serialization.XmlIgnoreAttribute()]
-    public bool dodslandSpecified {
-        get {
-            return this.dodslandFieldSpecified;
-        }
-        set {
-            this.dodslandFieldSpecified = value;
-        }
-    }
-    
-    /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-    public string dodssted {
-        get {
-            return this.dodsstedField;
-        }
-        set {
-            this.dodsstedField = value;
-        }
-    }
-    
-    /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-    public string fodested {
-        get {
-            return this.fodestedField;
-        }
-        set {
-            this.fodestedField = value;
-        }
-    }
-    
-    /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-    public System.DateTime fodselsdato {
-        get {
-            return this.fodselsdatoField;
-        }
-        set {
-            this.fodselsdatoField = value;
-        }
-    }
-    
-    /// <remarks/>
-    [System.Xml.Serialization.XmlIgnoreAttribute()]
-    public bool fodselsdatoSpecified {
-        get {
-            return this.fodselsdatoFieldSpecified;
-        }
-        set {
-            this.fodselsdatoFieldSpecified = value;
-        }
-    }
+    private Personnavn opprinneligNavnField;
     
     /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
@@ -175,6 +89,17 @@ public partial class person : aktor {
         }
         set {
             this.fulltNavnField = value;
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+    public Personnavn navn {
+        get {
+            return this.navnField;
+        }
+        set {
+            this.navnField = value;
         }
     }
     
@@ -202,23 +127,111 @@ public partial class person : aktor {
     
     /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-    public personnavn navn {
+    public landkode statsborgerskap {
         get {
-            return this.navnField;
+            return this.statsborgerskapField;
         }
         set {
-            this.navnField = value;
+            this.statsborgerskapField = value;
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIgnoreAttribute()]
+    public bool statsborgerskapSpecified {
+        get {
+            return this.statsborgerskapFieldSpecified;
+        }
+        set {
+            this.statsborgerskapFieldSpecified = value;
         }
     }
     
     /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-    public personnavn opprinneligNavn {
+    public System.DateTime fodselsdato {
         get {
-            return this.opprinneligNavnField;
+            return this.fodselsdatoField;
         }
         set {
-            this.opprinneligNavnField = value;
+            this.fodselsdatoField = value;
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIgnoreAttribute()]
+    public bool fodselsdatoSpecified {
+        get {
+            return this.fodselsdatoFieldSpecified;
+        }
+        set {
+            this.fodselsdatoFieldSpecified = value;
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+    public string fodested {
+        get {
+            return this.fodestedField;
+        }
+        set {
+            this.fodestedField = value;
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+    public System.DateTime dodsdato {
+        get {
+            return this.dodsdatoField;
+        }
+        set {
+            this.dodsdatoField = value;
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIgnoreAttribute()]
+    public bool dodsdatoSpecified {
+        get {
+            return this.dodsdatoFieldSpecified;
+        }
+        set {
+            this.dodsdatoFieldSpecified = value;
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+    public string dodssted {
+        get {
+            return this.dodsstedField;
+        }
+        set {
+            this.dodsstedField = value;
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+    public landkode dodsland {
+        get {
+            return this.dodslandField;
+        }
+        set {
+            this.dodslandField = value;
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIgnoreAttribute()]
+    public bool dodslandSpecified {
+        get {
+            return this.dodslandFieldSpecified;
+        }
+        set {
+            this.dodslandFieldSpecified = value;
         }
     }
     
@@ -246,61 +259,14 @@ public partial class person : aktor {
     
     /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-    public landkode statsborgerskap {
+    public Personnavn opprinneligNavn {
         get {
-            return this.statsborgerskapField;
+            return this.opprinneligNavnField;
         }
         set {
-            this.statsborgerskapField = value;
+            this.opprinneligNavnField = value;
         }
     }
-    
-    /// <remarks/>
-    [System.Xml.Serialization.XmlIgnoreAttribute()]
-    public bool statsborgerskapSpecified {
-        get {
-            return this.statsborgerskapFieldSpecified;
-        }
-        set {
-            this.statsborgerskapFieldSpecified = value;
-        }
-    }
-}
-
-/// <remarks/>
-[System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.81.0")]
-[System.SerializableAttribute()]
-public enum landkode {
-    
-    /// <remarks/>
-    NO,
-    
-    /// <remarks/>
-    DK,
-    
-    /// <remarks/>
-    SE,
-    
-    /// <remarks/>
-    US,
-}
-
-/// <remarks/>
-[System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.81.0")]
-[System.SerializableAttribute()]
-public enum kjonn {
-    
-    /// <remarks/>
-    KVINNE,
-    
-    /// <remarks/>
-    UKJENT,
-    
-    /// <remarks/>
-    MANN,
-    
-    /// <remarks/>
-    UBESTEMT,
 }
 
 /// <remarks/>
@@ -308,24 +274,14 @@ public enum kjonn {
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-public partial class personnavn {
-    
-    private string etternavnField;
+[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://skate.no/aktor/1.0")]
+public partial class Personnavn {
     
     private string fornavnField;
     
     private string mellomnavnField;
     
-    /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-    public string etternavn {
-        get {
-            return this.etternavnField;
-        }
-        set {
-            this.etternavnField = value;
-        }
-    }
+    private string etternavnField;
     
     /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
@@ -348,6 +304,17 @@ public partial class personnavn {
             this.mellomnavnField = value;
         }
     }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+    public string etternavn {
+        get {
+            return this.etternavnField;
+        }
+        set {
+            this.etternavnField = value;
+        }
+    }
 }
 
 /// <remarks/>
@@ -355,13 +322,14 @@ public partial class personnavn {
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-public partial class kontaktInformasjon {
+[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://skate.no/aktor/1.0")]
+public partial class Kontaktinformasjon {
     
     private string epostadresseField;
     
-    private string mobiltelefonnummerField;
-    
     private string telefonnummerField;
+    
+    private string mobiltelefonnummerField;
     
     /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
@@ -376,23 +344,23 @@ public partial class kontaktInformasjon {
     
     /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-    public string mobiltelefonnummer {
-        get {
-            return this.mobiltelefonnummerField;
-        }
-        set {
-            this.mobiltelefonnummerField = value;
-        }
-    }
-    
-    /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
     public string telefonnummer {
         get {
             return this.telefonnummerField;
         }
         set {
             this.telefonnummerField = value;
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+    public string mobiltelefonnummer {
+        get {
+            return this.mobiltelefonnummerField;
+        }
+        set {
+            this.mobiltelefonnummerField = value;
         }
     }
 }
@@ -402,37 +370,16 @@ public partial class kontaktInformasjon {
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-public partial class periode {
-    
-    private System.DateTime sluttField;
-    
-    private bool sluttFieldSpecified;
+[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://skate.no/aktor/1.0")]
+public partial class Periode {
     
     private System.DateTime startField;
     
     private bool startFieldSpecified;
     
-    /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-    public System.DateTime slutt {
-        get {
-            return this.sluttField;
-        }
-        set {
-            this.sluttField = value;
-        }
-    }
+    private System.DateTime sluttField;
     
-    /// <remarks/>
-    [System.Xml.Serialization.XmlIgnoreAttribute()]
-    public bool sluttSpecified {
-        get {
-            return this.sluttFieldSpecified;
-        }
-        set {
-            this.sluttFieldSpecified = value;
-        }
-    }
+    private bool sluttFieldSpecified;
     
     /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
@@ -455,6 +402,28 @@ public partial class periode {
             this.startFieldSpecified = value;
         }
     }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+    public System.DateTime slutt {
+        get {
+            return this.sluttField;
+        }
+        set {
+            this.sluttField = value;
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIgnoreAttribute()]
+    public bool sluttSpecified {
+        get {
+            return this.sluttFieldSpecified;
+        }
+        set {
+            this.sluttFieldSpecified = value;
+        }
+    }
 }
 
 /// <remarks/>
@@ -462,61 +431,40 @@ public partial class periode {
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-public partial class identifikator {
+[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://skate.no/aktor/1.0")]
+public partial class Identifikator {
     
-    private string identifikatorTypeField;
+    private string identifikatorverdiField;
     
-    private string identifikatorVerdiField;
-    
-    private periode periodeField;
-    
-    private string utstedtAvAutoritetField;
+    private string identifikatortypeField;
     
     private System.DateTime utstedtDatoField;
     
     private bool utstedtDatoFieldSpecified;
     
+    private string utstedtAvAutoritetField;
+    
+    private Periode periodeField;
+    
     /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-    public string identifikatorType {
+    public string identifikatorverdi {
         get {
-            return this.identifikatorTypeField;
+            return this.identifikatorverdiField;
         }
         set {
-            this.identifikatorTypeField = value;
+            this.identifikatorverdiField = value;
         }
     }
     
     /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-    public string identifikatorVerdi {
+    public string identifikatortype {
         get {
-            return this.identifikatorVerdiField;
+            return this.identifikatortypeField;
         }
         set {
-            this.identifikatorVerdiField = value;
-        }
-    }
-    
-    /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-    public periode periode {
-        get {
-            return this.periodeField;
-        }
-        set {
-            this.periodeField = value;
-        }
-    }
-    
-    /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-    public string utstedtAvAutoritet {
-        get {
-            return this.utstedtAvAutoritetField;
-        }
-        set {
-            this.utstedtAvAutoritetField = value;
+            this.identifikatortypeField = value;
         }
     }
     
@@ -541,40 +489,63 @@ public partial class identifikator {
             this.utstedtDatoFieldSpecified = value;
         }
     }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+    public string utstedtAvAutoritet {
+        get {
+            return this.utstedtAvAutoritetField;
+        }
+        set {
+            this.utstedtAvAutoritetField = value;
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+    public Periode periode {
+        get {
+            return this.periodeField;
+        }
+        set {
+            this.periodeField = value;
+        }
+    }
 }
 
 /// <remarks/>
-[System.Xml.Serialization.XmlIncludeAttribute(typeof(person))]
-[System.Xml.Serialization.XmlIncludeAttribute(typeof(ansatt))]
+[System.Xml.Serialization.XmlIncludeAttribute(typeof(Person))]
+[System.Xml.Serialization.XmlIncludeAttribute(typeof(Ansatt))]
 [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.81.0")]
 [System.SerializableAttribute()]
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.ComponentModel.DesignerCategoryAttribute("code")]
-public partial class aktor {
+[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://skate.no/aktor/1.0")]
+public partial class Aktor {
     
-    private identifikator identifikatorField;
+    private Identifikator[] identifikatorerField;
     
-    private kontaktInformasjon kontaktInformasjonField;
+    private Kontaktinformasjon kontaktinformasjonField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-    public identifikator identifikator {
+    [System.Xml.Serialization.XmlElementAttribute("identifikatorer", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
+    public Identifikator[] identifikatorer {
         get {
-            return this.identifikatorField;
+            return this.identifikatorerField;
         }
         set {
-            this.identifikatorField = value;
+            this.identifikatorerField = value;
         }
     }
     
     /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-    public kontaktInformasjon kontaktInformasjon {
+    public Kontaktinformasjon kontaktinformasjon {
         get {
-            return this.kontaktInformasjonField;
+            return this.kontaktinformasjonField;
         }
         set {
-            this.kontaktInformasjonField = value;
+            this.kontaktinformasjonField = value;
         }
     }
 }
@@ -582,13 +553,64 @@ public partial class aktor {
 /// <remarks/>
 [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.81.0")]
 [System.SerializableAttribute()]
+[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://skate.no/aktor/1.0")]
+public enum kjonn {
+    
+    /// <remarks/>
+    KVINNE,
+    
+    /// <remarks/>
+    UKJENT,
+    
+    /// <remarks/>
+    MANN,
+    
+    /// <remarks/>
+    UBESTEMT,
+}
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.81.0")]
+[System.SerializableAttribute()]
+[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://skate.no/aktor/1.0")]
+public enum landkode {
+    
+    /// <remarks/>
+    US,
+    
+    /// <remarks/>
+    SE,
+    
+    /// <remarks/>
+    NO,
+    
+    /// <remarks/>
+    DK,
+}
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.81.0")]
+[System.SerializableAttribute()]
+[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://skate.no/aktor/1.0")]
 public enum sivilstand {
+    
+    /// <remarks/>
+    SKILT,
+    
+    /// <remarks/>
+    SEPARERT,
+    
+    /// <remarks/>
+    SKILT_PARTNER,
+    
+    /// <remarks/>
+    ENKE_ELLER_ENKEMANN,
     
     /// <remarks/>
     GIFT,
     
     /// <remarks/>
-    SKILT_PARTNER,
+    GJENLEVENDE_PARTNER,
     
     /// <remarks/>
     UOPPGITT,
@@ -601,16 +623,4 @@ public enum sivilstand {
     
     /// <remarks/>
     REGISTRERT_PARTNER,
-    
-    /// <remarks/>
-    SEPARERT,
-    
-    /// <remarks/>
-    ENKE_ELLER_ENKEMANN,
-    
-    /// <remarks/>
-    GJENLEVENDE_PARTNER,
-    
-    /// <remarks/>
-    SKILT,
 }

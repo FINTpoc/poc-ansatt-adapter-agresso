@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using AnsattAdapterAgresso.AgressoController;
+using AnsattAdapterAgresso.RabbitMqController;
 using Json;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
@@ -16,64 +17,34 @@ namespace AnsattAdapterAgresso
     {
         static void Main(string[] args)
         {
-            var factory = new ConnectionFactory() { HostName = "152.93.120.130", Port = 5672, UserName = "guest", Password = "guest", RequestedHeartbeat = 60 };
-            using (var connection = factory.CreateConnection())
-            using (var channel = connection.CreateModel()) 
-            {
-                //channel.QueueDeclare(queue: "vaf-inn",
-                //                 durable: false,
-                //                 exclusive: false,
-                //                 autoDelete: false,
-                //                 arguments: null);
+            var queueName = "test";
+            var komponent = new AnsattKomponentController();
+            
 
-                var consumer = new EventingBasicConsumer(channel);
-                consumer.Received += Consumer_Received;
-                consumer.Shutdown += Consumer_Shutdown;
-                channel.BasicConsume("vaf-inn", true, consumer);
-                
-                //var body = Encoding.UTF8.GetString(test.Body);
+            komponent.GetMessagesBinding(queueName, Consumer_Received);
 
-                //var json = JsonParser.Deserialize(body);
-                //// json.Id, json.Identifikatortype
+            Console.WriteLine(@"Lytter etter meldinger på køen: {0} ... ", queueName);
+            Console.ReadLine();
 
-                //var a = new AnsattAgressoController().HentRessurs(json.Id);
-                //var svar = @"{ ""navn"": """ + a.FirstName + " " + a.Surname + @""" }";
-
-                //channel.BasicPublish(exchange: "",
-                //     routingKey: test.BasicProperties.ReplyTo,
-                //     basicProperties: null,
-                //     body: Encoding.UTF8.GetBytes(svar));
-
-                //Console.WriteLine(body);
-                Console.WriteLine(@"Venter på meldinger... Trykk 'Enter' for å avbryte");
-                Console.ReadLine();
-
-                if (consumer.ShutdownReason != null)
-                {
-                    Console.WriteLine("Årsak til shutdown: " + consumer.ShutdownReason);
-                    Console.ReadLine();
-                }
-            }
+            //if (consumer.ShutdownReason != null)
+            //{
+            //    Console.WriteLine("Årsak til shutdown: " + consumer.ShutdownReason);
+            //    Console.ReadLine();
+            //}
+            
         }
 
         private static void Consumer_Received(object sender, BasicDeliverEventArgs melding)
         {
             var body = melding.Body;
             var meldingsinnhold = Encoding.UTF8.GetString(body);
-            Console.WriteLine(" [x] Received {0}", meldingsinnhold);
-            SendTilbakemeldingTilAnsattFelleskomponent(melding);
-        }
-
-        private static void Consumer_Shutdown(object sender, ShutdownEventArgs e)
-        {
-            Console.WriteLine("Listener shutdown!");
+            Console.WriteLine(" Mottatt melding: {0}", meldingsinnhold);
+            //SendTilbakemeldingTilAnsattFelleskomponent(melding);
         }
 
         private static void SendTilbakemeldingTilAnsattFelleskomponent(BasicDeliverEventArgs message)
         {
-            var factory = new ConnectionFactory() { HostName = "152.93.120.130", Port = 5672, UserName = "guest", Password = "guest" };
-            using (var connection = factory.CreateConnection())
-            using (var channel = connection.CreateModel())
+            using (var channel = new AnsattKomponentController().GetChannel())
             {
                 var body = Encoding.UTF8.GetString(message.Body);
 
