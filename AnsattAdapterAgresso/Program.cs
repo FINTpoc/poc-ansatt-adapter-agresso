@@ -7,7 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using AnsattAdapterAgresso.AgressoController;
 using AnsattAdapterAgresso.RabbitMqController;
-using Json;
+using Newtonsoft.Json;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 
@@ -21,9 +21,13 @@ namespace AnsattAdapterAgresso
 
             var komponent = new AnsattKomponentController();
             komponent.GetMessagesBinding(queueName, Consumer_Received);
-
+            
             Console.WriteLine(@"Lytter etter meldinger på køen: {0} ... ", queueName);
             //Console.ReadLine();
+
+            // JSON TEST: 
+            // string ansattObject = JsonConvert.DeserializeObject<Ansatt>(ansattJson)
+            // string ansattJson = JsonConvert.SerializeObject(ansattObject)
         }
 
         private static void Consumer_Received(object sender, BasicDeliverEventArgs melding)
@@ -40,7 +44,7 @@ namespace AnsattAdapterAgresso
             {
                 var body = Encoding.UTF8.GetString(message.Body);
 
-                var json = JsonParser.Deserialize(body);
+                dynamic json = JsonConvert.DeserializeObject(body);
 
                 var a = new AnsattRessursController().HentRessurs(json.Id);
                 var svar = @"{ ""navn"": """ + a.FirstName + " " + a.Surname + @""" }";
