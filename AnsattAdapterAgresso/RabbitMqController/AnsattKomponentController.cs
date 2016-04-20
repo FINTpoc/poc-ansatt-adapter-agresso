@@ -43,6 +43,11 @@ namespace AnsattAdapterAgresso.RabbitMqController
             return _channel ?? GetConnection().CreateModel();
         }
 
+        public ConnectionFactory GetFactory()
+        {
+            return _factory;
+        }
+
         public void Dispose()
         {
             _connection.Close();
@@ -69,6 +74,7 @@ namespace AnsattAdapterAgresso.RabbitMqController
             consumer.Received += consumerReceived;
             consumer.Shutdown += consumerShutdown;
             channel.BasicConsume(queue, true, consumer);
+            // returnere eller loggføre consumer.ShutdownReason?
         }
 
         private void consumerShutdown(object sender, ShutdownEventArgs e)

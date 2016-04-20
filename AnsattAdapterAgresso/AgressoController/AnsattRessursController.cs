@@ -3,12 +3,19 @@ using AnsattAdapterAgresso.AgressoUserAdministrationServiceReference;
 
 namespace AnsattAdapterAgresso.AgressoController
 {
-    public class AnsattAgressoController : AgressoController
+    public class AnsattRessursController : AgressoController
     {
 
         public void OppdaterEpostTilRessurs(string ressursnummer, string epostadresse)
         {
-            
+            var ressurs = HentRessurs(ressursnummer);
+            ressurs.Addresses.Select(a =>
+            {
+                a.EMailList.Clear();
+                a.EMailList.Add(epostadresse);
+                return a;
+            }).ToList();
+            GetClient().ModifyResource(ressurs, GetWsCredentials());
         }
 
         public Resource HentRessurs(string ressursnummer)

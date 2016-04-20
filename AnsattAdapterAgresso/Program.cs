@@ -18,20 +18,12 @@ namespace AnsattAdapterAgresso
         static void Main(string[] args)
         {
             var queueName = "test";
-            var komponent = new AnsattKomponentController();
-            
 
+            var komponent = new AnsattKomponentController();
             komponent.GetMessagesBinding(queueName, Consumer_Received);
 
             Console.WriteLine(@"Lytter etter meldinger på køen: {0} ... ", queueName);
-            Console.ReadLine();
-
-            //if (consumer.ShutdownReason != null)
-            //{
-            //    Console.WriteLine("Årsak til shutdown: " + consumer.ShutdownReason);
-            //    Console.ReadLine();
-            //}
-            
+            //Console.ReadLine();
         }
 
         private static void Consumer_Received(object sender, BasicDeliverEventArgs melding)
@@ -44,19 +36,16 @@ namespace AnsattAdapterAgresso
 
         private static void SendTilbakemeldingTilAnsattFelleskomponent(BasicDeliverEventArgs message)
         {
-            using (var channel = new AnsattKomponentController().GetChannel())
+            using (var komponent = new AnsattKomponentController())
             {
                 var body = Encoding.UTF8.GetString(message.Body);
 
                 var json = JsonParser.Deserialize(body);
 
-                var a = new AnsattAgressoController().HentRessurs(json.Id);
+                var a = new AnsattRessursController().HentRessurs(json.Id);
                 var svar = @"{ ""navn"": """ + a.FirstName + " " + a.Surname + @""" }";
 
-                channel.BasicPublish(exchange: "",
-                    routingKey: message.BasicProperties.ReplyTo,
-                    basicProperties: null,
-                    body: Encoding.UTF8.GetBytes(svar));
+                komponent.SendMessage(Encoding.UTF8.GetBytes(svar), message.BasicProperties.ReplyTo);
 
             }
         }

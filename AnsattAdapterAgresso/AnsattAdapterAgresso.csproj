@@ -54,7 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AgressoController\AnsattAgressoController.cs" />
+    <Compile Include="AgressoController\AnsattRessursController.cs" />
     <Compile Include="AgressoController\AgressoController.cs" />
     <Compile Include="AnsattFkModel\ansatt.cs" />
     <Compile Include="Program.cs" />
