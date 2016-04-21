@@ -60,7 +60,7 @@
     <Compile Include="Event\event.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RabbitMqController\AnsattKomponentController.cs" />
+    <Compile Include="AnsattKomponentController\AnsattKomponentController.cs" />
     <Compile Include="Service References\AgressoUserAdministrationServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
