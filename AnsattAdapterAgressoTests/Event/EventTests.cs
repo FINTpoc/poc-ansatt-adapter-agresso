@@ -1,9 +1,8 @@
-﻿using System;
-using KellermanSoftware.CompareNetObjects;
+﻿using KellermanSoftware.CompareNetObjects;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 
-namespace AnsattAdapterAgressoTests
+namespace AnsattAdapterAgressoTests.Event
 {
     [TestClass]
     public class EventTests
@@ -11,7 +10,7 @@ namespace AnsattAdapterAgressoTests
         [TestMethod]
         public void CreateGetEmployeeResponseTest()
         {
-            var getEmployee = new Event()
+            var getEmployee = new global::Event()
             {
                 data = null,
                 verb = "getEmployee",
@@ -22,7 +21,7 @@ namespace AnsattAdapterAgressoTests
             };
             var getEmployeeJson = JsonConvert.SerializeObject(getEmployee);
 
-            var getEmployeeResponse = JsonConvert.DeserializeObject<Event>(getEmployeeJson);
+            var getEmployeeResponse = JsonConvert.DeserializeObject<global::Event>(getEmployeeJson);
             var result = new CompareLogic().Compare(getEmployee, getEmployeeResponse);
             Assert.IsTrue(result.AreEqual);
         }
@@ -34,7 +33,7 @@ namespace AnsattAdapterAgressoTests
             {
                 navn = new Personnavn() {etternavn = "Olsen", fornavn = "Ole"}
             };
-            var getEmployee = new Event()
+            var getEmployee = new global::Event()
             {
                 data = new object[] { ansatt },
                 verb = "getEmployee",
@@ -45,7 +44,7 @@ namespace AnsattAdapterAgressoTests
             };
             var getEmployeeJson = JsonConvert.SerializeObject(getEmployee);
 
-            var getEmployeeResponse = JsonConvert.DeserializeObject<Event>(getEmployeeJson);
+            var getEmployeeResponse = JsonConvert.DeserializeObject<global::Event>(getEmployeeJson);
             var getEmployeeResponseJson = JsonConvert.SerializeObject(getEmployeeResponse);
             
             Assert.IsTrue(getEmployeeJson.Equals(getEmployeeResponseJson));
