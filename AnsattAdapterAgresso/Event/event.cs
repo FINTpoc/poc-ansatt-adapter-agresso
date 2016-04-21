@@ -28,6 +28,8 @@ public partial class Event {
     
     private string idField;
     
+    private string orgIdField;
+    
     private long timeField;
     
     private type typeField;
@@ -55,6 +57,17 @@ public partial class Event {
         }
         set {
             this.idField = value;
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+    public string orgId {
+        get {
+            return this.orgIdField;
+        }
+        set {
+            this.orgIdField = value;
         }
     }
     
