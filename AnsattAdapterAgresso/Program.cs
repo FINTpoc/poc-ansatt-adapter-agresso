@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Runtime.Serialization.Json;
 using System.Text;
@@ -28,6 +29,21 @@ namespace AnsattAdapterAgresso
             // JSON TEST: 
             // string ansattObject = JsonConvert.DeserializeObject<Ansatt>(ansattJson)
             // string ansattJson = JsonConvert.SerializeObject(ansattObject)
+
+            // Eksempel: 
+
+            dynamic data = new ExpandoObject(); 
+            data.Status = "ok";
+            var e = new Event
+            {
+                id = "123",
+                verb = "updateEmployee",
+                time = 0,
+                type = type.RESPONSE,
+                data = new object[] { data }
+            };
+            var eJson = JsonConvert.SerializeObject(e);
+            
         }
 
         private static void Consumer_Received(object sender, BasicDeliverEventArgs melding)

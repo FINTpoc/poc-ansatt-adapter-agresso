@@ -57,6 +57,7 @@
     <Compile Include="AgressoController\AnsattRessursController.cs" />
     <Compile Include="AgressoController\AgressoController.cs" />
     <Compile Include="AnsattFkModel\ansatt.cs" />
+    <Compile Include="Event\event.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RabbitMqController\AnsattKomponentController.cs" />
@@ -70,6 +71,7 @@
     <None Include="AnsattFkModel\CreateClassFromXsd.bat" />
     <None Include="App.config" />
     <None Include="AppExample.config" />
+    <None Include="Event\CreateClassFromXsd.bat" />
     <None Include="packages.config" />
     <None Include="Service References\AgressoUserAdministrationServiceReference\AnsattAdapterAgresso.AgressoUserAdministrationServiceReference.AboutResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
