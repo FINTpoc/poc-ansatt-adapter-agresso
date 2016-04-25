@@ -79,6 +79,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="AppExample.config" />
+    <None Include="Event\updateEmployee.json" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>

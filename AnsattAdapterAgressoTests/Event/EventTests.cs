@@ -1,4 +1,8 @@
-﻿using KellermanSoftware.CompareNetObjects;
+﻿using System;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using KellermanSoftware.CompareNetObjects;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 
@@ -49,5 +53,18 @@ namespace AnsattAdapterAgressoTests.Event
             
             Assert.IsTrue(getEmployeeJson.Equals(getEmployeeResponseJson));
         }
+
+        [TestMethod]
+        public void ValidateUpdateEmployeeJsonGeneratedFromJavaTest()
+        {
+            var javaJson = File.ReadAllText(@"../../Event/updateEmployee.json");
+            var ev = JsonConvert.DeserializeObject<global::Event>(javaJson);
+            var ansatt = JsonConvert.DeserializeObject<Ansatt>(ev.data.First().ToString());
+
+            Assert.AreEqual("updateEmployee", ev.verb);
+            Assert.AreEqual("test@test.com", ansatt.kontaktinformasjon.epostadresse);
+            Assert.AreEqual("Pål", ansatt.navn.fornavn);
+        }
+        
     }
 }

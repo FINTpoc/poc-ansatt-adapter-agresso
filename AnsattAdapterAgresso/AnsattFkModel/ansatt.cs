@@ -8,6 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System;
 using System.Xml.Serialization;
 
 // 
@@ -55,7 +56,7 @@ public partial class Person : Aktor {
     
     private bool kjonnFieldSpecified;
     
-    private landkode statsborgerskapField;
+    private landkode? statsborgerskapField;
     
     private bool statsborgerskapFieldSpecified;
     
@@ -65,13 +66,13 @@ public partial class Person : Aktor {
     
     private string fodestedField;
     
-    private System.DateTime dodsdatoField;
+    private System.DateTime? dodsdatoField;
     
     private bool dodsdatoFieldSpecified;
     
     private string dodsstedField;
     
-    private landkode dodslandField;
+    private landkode? dodslandField;
     
     private bool dodslandFieldSpecified;
     
@@ -127,7 +128,7 @@ public partial class Person : Aktor {
     
     /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-    public landkode statsborgerskap {
+    public landkode? statsborgerskap {
         get {
             return this.statsborgerskapField;
         }
@@ -182,7 +183,7 @@ public partial class Person : Aktor {
     
     /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-    public System.DateTime dodsdato {
+    public System.DateTime? dodsdato {
         get {
             return this.dodsdatoField;
         }
@@ -215,7 +216,7 @@ public partial class Person : Aktor {
     
     /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-    public landkode dodsland {
+    public landkode? dodsland {
         get {
             return this.dodslandField;
         }
@@ -438,7 +439,7 @@ public partial class Identifikator {
     
     private string identifikatortypeField;
     
-    private System.DateTime utstedtDatoField;
+    private System.DateTime? utstedtDatoField;
     
     private bool utstedtDatoFieldSpecified;
     
@@ -470,7 +471,7 @@ public partial class Identifikator {
     
     /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-    public System.DateTime utstedtDato {
+    public System.DateTime? utstedtDato {
         get {
             return this.utstedtDatoField;
         }

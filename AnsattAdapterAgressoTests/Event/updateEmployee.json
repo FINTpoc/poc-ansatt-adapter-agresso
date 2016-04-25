@@ -1,0 +1,41 @@
+﻿{
+    "id": "f09de4d3-de2b-45b8-98b4-9e3abf7d85ad",
+    "verb": "updateEmployee",
+    "type": "REQUEST",
+    "time": 1461273717492,
+    "orgId": "test-orgid",
+    "data": [
+        {
+            "identifikatorer": [
+                {
+                    "identifikatorverdi": "45678901234",
+                    "identifikatortype": "fodselsnummer",
+                    "utstedtDato": null,
+                    "utstedtAvAutoritet": null,
+                    "periode": null
+                }
+            ],
+            "kontaktinformasjon": {
+                "epostadresse": "test@test.com",
+                "telefonnummer": "123456789",
+                "mobiltelefonnummer": "123456789"
+            },
+            "fulltNavn": null,
+            "navn": {
+                "fornavn": "Pål",
+                "mellomnavn": null,
+                "etternavn": "Persen"
+            },
+            "kjonn": "MANN",
+            "statsborgerskap": "NO",
+            "fodselsdato": "1982-07-24",
+            "fodested": null,
+            "dodsdato": null,
+            "dodssted": null,
+            "dodsland": null,
+            "sivilstand": "GIFT",
+            "opprinneligNavn": null,
+            "avdeling": "Rådmannens stab"
+        }
+    ]
+}

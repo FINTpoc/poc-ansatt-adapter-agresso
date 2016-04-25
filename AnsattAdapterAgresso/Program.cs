@@ -18,57 +18,77 @@ namespace AnsattAdapterAgresso
     {
         static void Main(string[] args)
         {
-            var queueName = "test";
+            var queueName = "fint:vaf.no:employee:in";
 
             var komponent = new AnsattKomponentController();
-            komponent.GetMessagesBinding(queueName, Consumer_Received);
+            komponent.GetMessagesBinding(queueName, BehandleMottattMelding);
             
             Console.WriteLine(@"Lytter etter meldinger på køen: {0} ... ", queueName);
-            //Console.ReadLine();
-
-            // JSON TEST: 
-            // string ansattObject = JsonConvert.DeserializeObject<Ansatt>(ansattJson)
-            // string ansattJson = JsonConvert.SerializeObject(ansattObject)
-
-            // Eksempel: 
-
-            dynamic data = new ExpandoObject(); 
-            data.Status = "ok";
-            var e = new Event
-            {
-                id = "123",
-                verb = "updateEmployee",
-                time = 0,
-                type = type.RESPONSE,
-                data = new object[] { data }
-            };
-            var eJson = JsonConvert.SerializeObject(e);
             
         }
 
-        private static void Consumer_Received(object sender, BasicDeliverEventArgs melding)
+        private static void BehandleMottattMelding(object sender, BasicDeliverEventArgs melding)
         {
-            var body = melding.Body;
-            var meldingsinnhold = Encoding.UTF8.GetString(body);
+            var meldingsinnhold = Encoding.UTF8.GetString(melding.Body);
+            var motattEvent = JsonConvert.DeserializeObject<Event>(meldingsinnhold);
+            var replyTo = melding.BasicProperties.ReplyTo;
+            switch (motattEvent.verb)
+            {
+                case "getEmployee":
+                    SendTilbakemeldingGetEmployee(motattEvent, replyTo);
+                    break;
+                case "getEmployees":
+                    SendTilbakemeldingGetEmployees(motattEvent, replyTo);
+                    break;
+                case "updateEmployee":
+                    SendTilbakemeldingUpdateEmployee(motattEvent, replyTo);
+                    break;
+            }
+
             Console.WriteLine(" Mottatt melding: {0}", meldingsinnhold);
-            //SendTilbakemeldingTilAnsattFelleskomponent(melding);
         }
 
-        private static void SendTilbakemeldingTilAnsattFelleskomponent(BasicDeliverEventArgs message)
+        private static void SendTilbakemeldingUpdateEmployee(Event requestEvent, string replyTo)
+        {
+            var motattAnsatt = JsonConvert.DeserializeObject<Ansatt>(requestEvent.data.First().ToString());
+            var ressursnummer = motattAnsatt.identifikatorer.First(i => i.identifikatortype == "ressursnummer").identifikatorverdi;
+            var ansatt = new AnsattRessursController().HentRessurs(ressursnummer);
+            var responseEventJson = LagResponseEvent(requestEvent, new object[] {ansatt});
+            SendMelding(replyTo, responseEventJson);
+        }
+
+        private static void SendTilbakemeldingGetEmployees(Event requestEvent, string replyTo)
+        {
+            var ansatte = new AnsattRessursController().HentAlleRessurser();
+            var responseEventJson = LagResponseEvent(requestEvent, ansatte);
+            SendMelding(replyTo, responseEventJson);
+        }
+
+        private static void SendTilbakemeldingGetEmployee(Event requestEvent, string replyTo)
+        {
+            var motattAnsatt = JsonConvert.DeserializeObject<Aktor>(requestEvent.data.First().ToString());
+            var ressursnummer = motattAnsatt.identifikatorer.First(i => i.identifikatortype == "ressursnummer").identifikatorverdi;
+            var epostadresse = motattAnsatt.kontaktinformasjon.epostadresse;
+            new AnsattRessursController().OppdaterEpostTilRessurs(ressursnummer, epostadresse);
+            var responseEventJson = LagResponseEvent(requestEvent, new object[] { "OK" });
+            SendMelding(replyTo, responseEventJson);
+        }
+
+        private static string LagResponseEvent(Event requestEvent, object[] data)
+        {
+            var responseEvent = requestEvent;
+            responseEvent.type = type.RESPONSE;
+            responseEvent.data = data;
+            var responseEventJson = JsonConvert.SerializeObject(responseEvent);
+            return responseEventJson;
+        }
+
+        private static void SendMelding(string replyTo, string responseEvent)
         {
             using (var komponent = new AnsattKomponentController())
             {
-                var body = Encoding.UTF8.GetString(message.Body);
-
-                dynamic json = JsonConvert.DeserializeObject(body);
-
-                var a = new AnsattRessursController().HentRessurs(json.Id);
-                var svar = @"{ ""navn"": """ + a.FirstName + " " + a.Surname + @""" }";
-
-                komponent.SendMessage(Encoding.UTF8.GetBytes(svar), message.BasicProperties.ReplyTo);
-
+                komponent.SendMessage(responseEvent, replyTo);
             }
         }
-
     }
 }
