@@ -7,7 +7,7 @@ namespace AnsattAdapterAgresso
 
         public static Ansatt AgressoRessursTilFkAnsatt(Resource ressurs)
         {
-            return new Ansatt()
+            var ansatt = new Ansatt()
             {
                 identifikatorer = new Identifikator[]
                 {
@@ -16,6 +16,7 @@ namespace AnsattAdapterAgresso
                 navn = new Personnavn() { etternavn = ressurs.Surname, fornavn = ressurs.FirstName },
                 fulltNavn = ressurs.Name,
             };
+            return ansatt;
         }
     }
 }
