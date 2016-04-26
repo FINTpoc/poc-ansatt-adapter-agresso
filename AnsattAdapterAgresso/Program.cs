@@ -53,7 +53,8 @@ namespace AnsattAdapterAgresso
         {
             var motattAnsatt = JsonConvert.DeserializeObject<Ansatt>(requestEvent.data.First().ToString());
             var ressursnummer = FinnRessursnummer(motattAnsatt.identifikatorer);
-            var ansatt = new AnsattRessursController().HentRessurs(ressursnummer);
+            var ressurs = new AnsattRessursController().HentRessurs(ressursnummer);
+            var ansatt = Mapping.AgressoRessursTilFkAnsatt(ressurs);
             var responseEventJson = LagResponseEvent(requestEvent, new object[] {ansatt});
             SendMelding(replyTo, responseEventJson);
         }
@@ -64,14 +65,15 @@ namespace AnsattAdapterAgresso
             var ressursnummer = FinnRessursnummer(motattAnsatt.identifikatorer);
             var epostadresse = motattAnsatt.kontaktinformasjon.epostadresse;
             new AnsattRessursController().OppdaterEpostTilRessurs(ressursnummer, epostadresse);
-            var responseEventJson = LagResponseEvent(requestEvent, new object[] { "OK" });
+            var responseEventJson = LagResponseEvent(requestEvent, new object[] { new { Status = "OK" } });
             SendMelding(replyTo, responseEventJson);
         }
 
         private static void SendTilbakemeldingGetEmployees(Event requestEvent, string replyTo)
         {
             var ansatte = new AnsattRessursController().HentAlleRessurser();
-            var responseEventJson = LagResponseEvent(requestEvent, ansatte.Select(a => (object)a).ToArray());
+            var ressurser = ansatte.Select(a => (object)Mapping.AgressoRessursTilFkAnsatt(a)).ToArray();
+            var responseEventJson = LagResponseEvent(requestEvent, ressurser);
             SendMelding(replyTo, responseEventJson);
         }
 
