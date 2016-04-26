@@ -8,7 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
 using System.Xml.Serialization;
 
 // 
@@ -52,31 +51,31 @@ public partial class Person : Aktor {
     
     private Personnavn navnField;
     
-    private kjonn kjonnField;
+    private System.Nullable<kjonn> kjonnField;
     
     private bool kjonnFieldSpecified;
     
-    private landkode? statsborgerskapField;
+    private System.Nullable<landkode> statsborgerskapField;
     
     private bool statsborgerskapFieldSpecified;
     
-    private System.DateTime fodselsdatoField;
+    private System.Nullable<System.DateTime> fodselsdatoField;
     
     private bool fodselsdatoFieldSpecified;
     
     private string fodestedField;
     
-    private System.DateTime? dodsdatoField;
+    private System.Nullable<System.DateTime> dodsdatoField;
     
     private bool dodsdatoFieldSpecified;
     
     private string dodsstedField;
     
-    private landkode? dodslandField;
+    private System.Nullable<landkode> dodslandField;
     
     private bool dodslandFieldSpecified;
     
-    private sivilstand sivilstandField;
+    private System.Nullable<sivilstand> sivilstandField;
     
     private bool sivilstandFieldSpecified;
     
@@ -105,8 +104,8 @@ public partial class Person : Aktor {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-    public kjonn kjonn {
+    [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
+    public System.Nullable<kjonn> kjonn {
         get {
             return this.kjonnField;
         }
@@ -127,8 +126,8 @@ public partial class Person : Aktor {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-    public landkode? statsborgerskap {
+    [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
+    public System.Nullable<landkode> statsborgerskap {
         get {
             return this.statsborgerskapField;
         }
@@ -149,8 +148,8 @@ public partial class Person : Aktor {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-    public System.DateTime fodselsdato {
+    [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
+    public System.Nullable<System.DateTime> fodselsdato {
         get {
             return this.fodselsdatoField;
         }
@@ -182,8 +181,8 @@ public partial class Person : Aktor {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-    public System.DateTime? dodsdato {
+    [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
+    public System.Nullable<System.DateTime> dodsdato {
         get {
             return this.dodsdatoField;
         }
@@ -215,8 +214,8 @@ public partial class Person : Aktor {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-    public landkode? dodsland {
+    [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
+    public System.Nullable<landkode> dodsland {
         get {
             return this.dodslandField;
         }
@@ -237,8 +236,8 @@ public partial class Person : Aktor {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-    public sivilstand sivilstand {
+    [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
+    public System.Nullable<sivilstand> sivilstand {
         get {
             return this.sivilstandField;
         }
@@ -374,17 +373,17 @@ public partial class Kontaktinformasjon {
 [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://skate.no/aktor/1.0")]
 public partial class Periode {
     
-    private System.DateTime startField;
+    private System.Nullable<System.DateTime> startField;
     
     private bool startFieldSpecified;
     
-    private System.DateTime sluttField;
+    private System.Nullable<System.DateTime> sluttField;
     
     private bool sluttFieldSpecified;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-    public System.DateTime start {
+    [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
+    public System.Nullable<System.DateTime> start {
         get {
             return this.startField;
         }
@@ -405,8 +404,8 @@ public partial class Periode {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-    public System.DateTime slutt {
+    [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
+    public System.Nullable<System.DateTime> slutt {
         get {
             return this.sluttField;
         }
@@ -439,7 +438,7 @@ public partial class Identifikator {
     
     private string identifikatortypeField;
     
-    private System.DateTime? utstedtDatoField;
+    private System.Nullable<System.DateTime> utstedtDatoField;
     
     private bool utstedtDatoFieldSpecified;
     
@@ -470,8 +469,8 @@ public partial class Identifikator {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-    public System.DateTime? utstedtDato {
+    [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
+    public System.Nullable<System.DateTime> utstedtDato {
         get {
             return this.utstedtDatoField;
         }
@@ -558,9 +557,6 @@ public partial class Aktor {
 public enum kjonn {
     
     /// <remarks/>
-    KVINNE,
-    
-    /// <remarks/>
     UKJENT,
     
     /// <remarks/>
@@ -568,6 +564,9 @@ public enum kjonn {
     
     /// <remarks/>
     UBESTEMT,
+    
+    /// <remarks/>
+    KVINNE,
 }
 
 /// <remarks/>
@@ -577,16 +576,16 @@ public enum kjonn {
 public enum landkode {
     
     /// <remarks/>
-    US,
+    DK,
     
     /// <remarks/>
-    SE,
+    US,
     
     /// <remarks/>
     NO,
     
     /// <remarks/>
-    DK,
+    SE,
 }
 
 /// <remarks/>
@@ -596,31 +595,31 @@ public enum landkode {
 public enum sivilstand {
     
     /// <remarks/>
-    SKILT,
-    
-    /// <remarks/>
-    SEPARERT,
-    
-    /// <remarks/>
-    SKILT_PARTNER,
-    
-    /// <remarks/>
-    ENKE_ELLER_ENKEMANN,
+    UGIFT,
     
     /// <remarks/>
     GIFT,
     
     /// <remarks/>
-    GJENLEVENDE_PARTNER,
+    SEPARERT,
     
     /// <remarks/>
     UOPPGITT,
     
     /// <remarks/>
+    ENKE_ELLER_ENKEMANN,
+    
+    /// <remarks/>
     SEPARERT_PARTNER,
     
     /// <remarks/>
-    UGIFT,
+    SKILT,
+    
+    /// <remarks/>
+    SKILT_PARTNER,
+    
+    /// <remarks/>
+    GJENLEVENDE_PARTNER,
     
     /// <remarks/>
     REGISTRERT_PARTNER,

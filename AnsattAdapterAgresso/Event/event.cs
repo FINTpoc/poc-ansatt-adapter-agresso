@@ -24,30 +24,21 @@ using System.Xml.Serialization;
 [System.Xml.Serialization.XmlRootAttribute("event", Namespace="http://fk.no/event/1.0", IsNullable=false)]
 public partial class Event {
     
-    private object[] dataField;
-    
     private string idField;
-    
-    private string orgIdField;
-    
-    private long timeField;
-    
-    private type typeField;
-    
-    private bool typeFieldSpecified;
     
     private string verbField;
     
-    /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute("data", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
-    public object[] data {
-        get {
-            return this.dataField;
-        }
-        set {
-            this.dataField = value;
-        }
-    }
+    private System.Nullable<type> typeField;
+    
+    private bool typeFieldSpecified;
+    
+    private System.Nullable<System.DateTime> timeField;
+    
+    private bool timeFieldSpecified;
+    
+    private string orgIdField;
+    
+    private object[] dataField;
     
     /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
@@ -62,29 +53,18 @@ public partial class Event {
     
     /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-    public string orgId {
+    public string verb {
         get {
-            return this.orgIdField;
+            return this.verbField;
         }
         set {
-            this.orgIdField = value;
+            this.verbField = value;
         }
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-    public long time {
-        get {
-            return this.timeField;
-        }
-        set {
-            this.timeField = value;
-        }
-    }
-    
-    /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-    public type type {
+    [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
+    public System.Nullable<type> type {
         get {
             return this.typeField;
         }
@@ -105,13 +85,46 @@ public partial class Event {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-    public string verb {
+    [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
+    public System.Nullable<System.DateTime> time {
         get {
-            return this.verbField;
+            return this.timeField;
         }
         set {
-            this.verbField = value;
+            this.timeField = value;
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIgnoreAttribute()]
+    public bool timeSpecified {
+        get {
+            return this.timeFieldSpecified;
+        }
+        set {
+            this.timeFieldSpecified = value;
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+    public string orgId {
+        get {
+            return this.orgIdField;
+        }
+        set {
+            this.orgIdField = value;
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute("data", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
+    public object[] data {
+        get {
+            return this.dataField;
+        }
+        set {
+            this.dataField = value;
         }
     }
 }
@@ -123,8 +136,44 @@ public partial class Event {
 public enum type {
     
     /// <remarks/>
-    RESPONSE,
+    REQUEST,
     
     /// <remarks/>
-    REQUEST,
+    RESPONSE,
+}
+
+/// <remarks/>
+[System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.81.0")]
+[System.SerializableAttribute()]
+[System.Diagnostics.DebuggerStepThroughAttribute()]
+[System.ComponentModel.DesignerCategoryAttribute("code")]
+[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://fk.no/event/1.0")]
+[System.Xml.Serialization.XmlRootAttribute("eventResponse", Namespace="http://fk.no/event/1.0", IsNullable=false)]
+public partial class EventResponse {
+    
+    private string statusField;
+    
+    private string messageField;
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+    public string status {
+        get {
+            return this.statusField;
+        }
+        set {
+            this.statusField = value;
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+    public string message {
+        get {
+            return this.messageField;
+        }
+        set {
+            this.messageField = value;
+        }
+    }
 }

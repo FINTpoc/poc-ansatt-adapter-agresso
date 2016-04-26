@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Dynamic;
 using System.Linq;
 using System.Runtime.Serialization.Json;
@@ -18,7 +19,7 @@ namespace AnsattAdapterAgresso
     {
         static void Main(string[] args)
         {
-            var queueName = "fint:vaf.no:employee:in";
+            var queueName = ConfigurationManager.AppSettings["AnsattKomponentQueue"];
 
             var komponent = new AnsattKomponentController();
             komponent.GetMessagesBinding(queueName, BehandleMottattMelding);
@@ -51,27 +52,32 @@ namespace AnsattAdapterAgresso
         private static void SendTilbakemeldingUpdateEmployee(Event requestEvent, string replyTo)
         {
             var motattAnsatt = JsonConvert.DeserializeObject<Ansatt>(requestEvent.data.First().ToString());
-            var ressursnummer = motattAnsatt.identifikatorer.First(i => i.identifikatortype == "ressursnummer").identifikatorverdi;
+            var ressursnummer = FinnRessursnummer(motattAnsatt.identifikatorer);
             var ansatt = new AnsattRessursController().HentRessurs(ressursnummer);
             var responseEventJson = LagResponseEvent(requestEvent, new object[] {ansatt});
-            SendMelding(replyTo, responseEventJson);
-        }
-
-        private static void SendTilbakemeldingGetEmployees(Event requestEvent, string replyTo)
-        {
-            var ansatte = new AnsattRessursController().HentAlleRessurser();
-            var responseEventJson = LagResponseEvent(requestEvent, ansatte);
             SendMelding(replyTo, responseEventJson);
         }
 
         private static void SendTilbakemeldingGetEmployee(Event requestEvent, string replyTo)
         {
             var motattAnsatt = JsonConvert.DeserializeObject<Aktor>(requestEvent.data.First().ToString());
-            var ressursnummer = motattAnsatt.identifikatorer.First(i => i.identifikatortype == "ressursnummer").identifikatorverdi;
+            var ressursnummer = FinnRessursnummer(motattAnsatt.identifikatorer);
             var epostadresse = motattAnsatt.kontaktinformasjon.epostadresse;
             new AnsattRessursController().OppdaterEpostTilRessurs(ressursnummer, epostadresse);
             var responseEventJson = LagResponseEvent(requestEvent, new object[] { "OK" });
             SendMelding(replyTo, responseEventJson);
+        }
+
+        private static void SendTilbakemeldingGetEmployees(Event requestEvent, string replyTo)
+        {
+            var ansatte = new AnsattRessursController().HentAlleRessurser();
+            var responseEventJson = LagResponseEvent(requestEvent, ansatte.Select(a => (object)a).ToArray());
+            SendMelding(replyTo, responseEventJson);
+        }
+
+        private static string FinnRessursnummer(Identifikator[] identifikator)
+        {
+            return identifikator.First(i => i.identifikatortype == "ressursnummer").identifikatorverdi;
         }
 
         private static string LagResponseEvent(Event requestEvent, object[] data)

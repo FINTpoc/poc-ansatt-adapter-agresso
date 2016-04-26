@@ -19,7 +19,7 @@ namespace AnsattAdapterAgressoTests.Event
                 data = null,
                 verb = "getEmployee",
                 type = type.RESPONSE,
-                time = 0,
+                time = DateTime.Now,
                 id = "123",
                 orgId = ""
             };
@@ -42,7 +42,7 @@ namespace AnsattAdapterAgressoTests.Event
                 data = new object[] { ansatt },
                 verb = "getEmployee",
                 type = type.RESPONSE,
-                time = 0,
+                time = DateTime.Now,
                 id = "123",
                 orgId = ""
             };
