@@ -1,4 +1,5 @@
-﻿using AnsattAdapterAgresso.AgressoUserAdministrationServiceReference;
+﻿using System.Linq;
+using AnsattAdapterAgresso.AgressoUserAdministrationServiceReference;
 
 namespace AnsattAdapterAgresso
 {
@@ -7,6 +8,13 @@ namespace AnsattAdapterAgresso
 
         public static Ansatt AgressoRessursTilFkAnsatt(Resource ressurs)
         {
+            string epostadresse = null;
+            var adress = ressurs.Addresses?.FirstOrDefault();
+            if (adress != null)
+            {
+                epostadresse = adress.EMailList?.FirstOrDefault();
+            }
+
             var ansatt = new Ansatt()
             {
                 identifikatorer = new Identifikator[]
@@ -15,6 +23,7 @@ namespace AnsattAdapterAgresso
                 },
                 navn = new Personnavn() { etternavn = ressurs.Surname, fornavn = ressurs.FirstName },
                 fulltNavn = ressurs.Name,
+                kontaktinformasjon = new Kontaktinformasjon() { epostadresse = epostadresse}
             };
             return ansatt;
         }

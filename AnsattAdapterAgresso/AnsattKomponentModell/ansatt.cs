@@ -115,15 +115,15 @@ public partial class Person : Aktor {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlIgnoreAttribute()]
-    public bool kjonnSpecified {
-        get {
-            return this.kjonnFieldSpecified;
-        }
-        set {
-            this.kjonnFieldSpecified = value;
-        }
-    }
+    //[System.Xml.Serialization.XmlIgnoreAttribute()]
+    //public bool kjonnSpecified {
+    //    get {
+    //        return this.kjonnFieldSpecified;
+    //    }
+    //    set {
+    //        this.kjonnFieldSpecified = value;
+    //    }
+    //}
     
     /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
@@ -137,15 +137,15 @@ public partial class Person : Aktor {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlIgnoreAttribute()]
-    public bool statsborgerskapSpecified {
-        get {
-            return this.statsborgerskapFieldSpecified;
-        }
-        set {
-            this.statsborgerskapFieldSpecified = value;
-        }
-    }
+    //[System.Xml.Serialization.XmlIgnoreAttribute()]
+    //public bool statsborgerskapSpecified {
+    //    get {
+    //        return this.statsborgerskapFieldSpecified;
+    //    }
+    //    set {
+    //        this.statsborgerskapFieldSpecified = value;
+    //    }
+    //}
     
     /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
@@ -159,15 +159,15 @@ public partial class Person : Aktor {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlIgnoreAttribute()]
-    public bool fodselsdatoSpecified {
-        get {
-            return this.fodselsdatoFieldSpecified;
-        }
-        set {
-            this.fodselsdatoFieldSpecified = value;
-        }
-    }
+    //[System.Xml.Serialization.XmlIgnoreAttribute()]
+    //public bool fodselsdatoSpecified {
+    //    get {
+    //        return this.fodselsdatoFieldSpecified;
+    //    }
+    //    set {
+    //        this.fodselsdatoFieldSpecified = value;
+    //    }
+    //}
     
     /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
@@ -192,15 +192,15 @@ public partial class Person : Aktor {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlIgnoreAttribute()]
-    public bool dodsdatoSpecified {
-        get {
-            return this.dodsdatoFieldSpecified;
-        }
-        set {
-            this.dodsdatoFieldSpecified = value;
-        }
-    }
+    //[System.Xml.Serialization.XmlIgnoreAttribute()]
+    //public bool dodsdatoSpecified {
+    //    get {
+    //        return this.dodsdatoFieldSpecified;
+    //    }
+    //    set {
+    //        this.dodsdatoFieldSpecified = value;
+    //    }
+    //}
     
     /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
@@ -225,15 +225,15 @@ public partial class Person : Aktor {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlIgnoreAttribute()]
-    public bool dodslandSpecified {
-        get {
-            return this.dodslandFieldSpecified;
-        }
-        set {
-            this.dodslandFieldSpecified = value;
-        }
-    }
+    //[System.Xml.Serialization.XmlIgnoreAttribute()]
+    //public bool dodslandSpecified {
+    //    get {
+    //        return this.dodslandFieldSpecified;
+    //    }
+    //    set {
+    //        this.dodslandFieldSpecified = value;
+    //    }
+    //}
     
     /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
@@ -247,15 +247,15 @@ public partial class Person : Aktor {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlIgnoreAttribute()]
-    public bool sivilstandSpecified {
-        get {
-            return this.sivilstandFieldSpecified;
-        }
-        set {
-            this.sivilstandFieldSpecified = value;
-        }
-    }
+    //[System.Xml.Serialization.XmlIgnoreAttribute()]
+    //public bool sivilstandSpecified {
+    //    get {
+    //        return this.sivilstandFieldSpecified;
+    //    }
+    //    set {
+    //        this.sivilstandFieldSpecified = value;
+    //    }
+    //}
     
     /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
@@ -393,15 +393,15 @@ public partial class Periode {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlIgnoreAttribute()]
-    public bool startSpecified {
-        get {
-            return this.startFieldSpecified;
-        }
-        set {
-            this.startFieldSpecified = value;
-        }
-    }
+    //[System.Xml.Serialization.XmlIgnoreAttribute()]
+    //public bool startSpecified {
+    //    get {
+    //        return this.startFieldSpecified;
+    //    }
+    //    set {
+    //        this.startFieldSpecified = value;
+    //    }
+    //}
     
     /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
@@ -415,15 +415,15 @@ public partial class Periode {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlIgnoreAttribute()]
-    public bool sluttSpecified {
-        get {
-            return this.sluttFieldSpecified;
-        }
-        set {
-            this.sluttFieldSpecified = value;
-        }
-    }
+    //[System.Xml.Serialization.XmlIgnoreAttribute()]
+    //public bool sluttSpecified {
+    //    get {
+    //        return this.sluttFieldSpecified;
+    //    }
+    //    set {
+    //        this.sluttFieldSpecified = value;
+    //    }
+    //}
 }
 
 /// <remarks/>
@@ -480,15 +480,15 @@ public partial class Identifikator {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlIgnoreAttribute()]
-    public bool utstedtDatoSpecified {
-        get {
-            return this.utstedtDatoFieldSpecified;
-        }
-        set {
-            this.utstedtDatoFieldSpecified = value;
-        }
-    }
+    //[System.Xml.Serialization.XmlIgnoreAttribute()]
+    //public bool utstedtDatoSpecified {
+    //    get {
+    //        return this.utstedtDatoFieldSpecified;
+    //    }
+    //    set {
+    //        this.utstedtDatoFieldSpecified = value;
+    //    }
+    //}
     
     /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]

@@ -33,6 +33,9 @@ namespace AnsattAdapterAgresso
             var meldingsinnhold = Encoding.UTF8.GetString(melding.Body);
             var motattEvent = JsonConvert.DeserializeObject<Event>(meldingsinnhold);
             var replyTo = melding.BasicProperties.ReplyTo;
+            Console.WriteLine();
+            Console.WriteLine("Mottatt melding av typen: {0}", motattEvent.verb);
+            Console.WriteLine($@" Meldingsinnhold: {meldingsinnhold}");
             switch (motattEvent.verb)
             {
                 case "getEmployee":
@@ -46,34 +49,36 @@ namespace AnsattAdapterAgresso
                     break;
             }
 
-            Console.WriteLine(" Mottatt melding: {0}", meldingsinnhold);
+            
+        }
+
+        private static void SendTilbakemeldingGetEmployee(Event requestEvent, string replyTo)
+        {
+            var identifikator = JsonConvert.DeserializeObject<Identifikator>(requestEvent.data.First().ToString());
+            var ressursnummer = identifikator.identifikatorverdi;
+            var ressurs = new AnsattRessursController().HentRessurs(ressursnummer);
+            var ansatt = Mapping.AgressoRessursTilFkAnsatt(ressurs);
+            var responseEventJson = LagResponseEvent(requestEvent, new object[] {ansatt});
+            Console.WriteLine($@" Sendt melding: { responseEventJson }");
+            SendMelding(replyTo, responseEventJson);
         }
 
         private static void SendTilbakemeldingUpdateEmployee(Event requestEvent, string replyTo)
         {
             var motattAnsatt = JsonConvert.DeserializeObject<Ansatt>(requestEvent.data.First().ToString());
             var ressursnummer = FinnRessursnummer(motattAnsatt.identifikatorer);
-            var ressurs = new AnsattRessursController().HentRessurs(ressursnummer);
-            var ansatt = Mapping.AgressoRessursTilFkAnsatt(ressurs);
-            var responseEventJson = LagResponseEvent(requestEvent, new object[] {ansatt});
-            SendMelding(replyTo, responseEventJson);
-        }
-
-        private static void SendTilbakemeldingGetEmployee(Event requestEvent, string replyTo)
-        {
-            var motattAnsatt = JsonConvert.DeserializeObject<Aktor>(requestEvent.data.First().ToString());
-            var ressursnummer = FinnRessursnummer(motattAnsatt.identifikatorer);
             var epostadresse = motattAnsatt.kontaktinformasjon.epostadresse;
             new AnsattRessursController().OppdaterEpostTilRessurs(ressursnummer, epostadresse);
-            var responseEventJson = LagResponseEvent(requestEvent, new object[] { new { Status = "OK" } });
+            var responseEventJson = LagResponseEvent(requestEvent, new object[] { new EventResponse(){ status = "OK" } });
             SendMelding(replyTo, responseEventJson);
         }
 
         private static void SendTilbakemeldingGetEmployees(Event requestEvent, string replyTo)
         {
-            var ansatte = new AnsattRessursController().HentAlleRessurser();
+            var ansatte = new AnsattRessursController().HentRessurser("915*");
             var ressurser = ansatte.Select(a => (object)Mapping.AgressoRessursTilFkAnsatt(a)).ToArray();
             var responseEventJson = LagResponseEvent(requestEvent, ressurser);
+            Console.WriteLine($@"Sender svar på GetEmployees. Antall ansatte: {ressurser.Count()}");
             SendMelding(replyTo, responseEventJson);
         }
 

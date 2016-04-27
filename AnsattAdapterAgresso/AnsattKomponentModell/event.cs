@@ -74,15 +74,15 @@ public partial class Event {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlIgnoreAttribute()]
-    public bool typeSpecified {
-        get {
-            return this.typeFieldSpecified;
-        }
-        set {
-            this.typeFieldSpecified = value;
-        }
-    }
+    //[System.Xml.Serialization.XmlIgnoreAttribute()]
+    //public bool typeSpecified {
+    //    get {
+    //        return this.typeFieldSpecified;
+    //    }
+    //    set {
+    //        this.typeFieldSpecified = value;
+    //    }
+    //}
     
     /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
@@ -96,15 +96,15 @@ public partial class Event {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlIgnoreAttribute()]
-    public bool timeSpecified {
-        get {
-            return this.timeFieldSpecified;
-        }
-        set {
-            this.timeFieldSpecified = value;
-        }
-    }
+    //[System.Xml.Serialization.XmlIgnoreAttribute()]
+    //public bool timeSpecified {
+    //    get {
+    //        return this.timeFieldSpecified;
+    //    }
+    //    set {
+    //        this.timeFieldSpecified = value;
+    //    }
+    //}
     
     /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
