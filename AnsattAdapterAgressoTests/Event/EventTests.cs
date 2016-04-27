@@ -69,7 +69,7 @@ namespace AnsattAdapterAgressoTests.Event
         [TestMethod]
         public void ValidateEventJsonTest()
         {
-            var eventJson = @"{ ""id"":""1463ab18-0a89-47c9-8959-999487de5751"",""verb"":""getEmployees"",""type"":""REQUEST"",""time"":""2016-04-17T13:12:11"",""orgId"":""vaf.no"",""data"":[] }";
+            var eventJson = @"{ ""id"":""1463ab18-0a89-47c9-8959-999487de5751"",""verb"":""getEmployees"",""type"":""REQUEST"",""time"":""2016-04-17 13:12:11"",""orgId"":""vaf.no"",""data"":[] }";
             var eventObject = JsonConvert.DeserializeObject<global::Event>(eventJson);
             Assert.AreEqual(new DateTime(2016, 04, 17, 13, 12, 11), eventObject.time);
         }
