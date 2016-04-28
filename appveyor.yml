@@ -8,4 +8,4 @@ before_build:
 test:
   categories:
     except:
-	  - Integration test
+	  - IntegrationTests

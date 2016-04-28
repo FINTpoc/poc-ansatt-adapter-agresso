@@ -10,7 +10,7 @@ namespace AnsattAdapterAgressoTests
     [TestClass]
     public class AnsattAgressoControllerTest
     {
-        [TestMethod, TestCategory("Integration test")]
+        [TestMethod, TestCategory("IntegrationTests")]
         public void HentAnsattTest()
         {
             var ansattAgressoController = new AnsattRessursController();
@@ -20,7 +20,7 @@ namespace AnsattAdapterAgressoTests
             Assert.AreEqual("Ole Anders", x.FirstName);
         }
 
-        [TestMethod, Ignore, TestCategory("Integration test"), TestCategory("Slow > 1 min")]
+        [TestMethod, Ignore, TestCategory("IntegrationTests"), TestCategory("Slow > 1 min")]
         public void HentAlleAnsatteTest()
         {
             var ansattAgressoController = new AnsattRessursController();
@@ -30,7 +30,7 @@ namespace AnsattAdapterAgressoTests
             Assert.AreEqual(3886, x.Length);
         }
 
-        [TestMethod, TestCategory("Integration test")]
+        [TestMethod, TestCategory("IntegrationTests")]
         public void OppdaterEpostTilRessursTest()
         {
             var ansattAgressoController = new AnsattRessursController();
