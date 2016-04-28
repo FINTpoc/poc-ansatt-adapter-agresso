@@ -5,4 +5,7 @@ before_build:
   - cmd: copy AnsattAdapterAgressoTests\AppExample.config AnsattAdapterAgressoTests\App.config
   - nuget restore
 
-test: off
+test:
+  categories:
+    except:
+	  - Integration test
