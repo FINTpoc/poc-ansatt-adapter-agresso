@@ -1,5 +1,7 @@
 # Adapter for Agresso mot ansatt-felleskomponent
 
+[![Build status](https://ci.appveyor.com/api/projects/status/x21o9a50hmii2cgc?svg=true)](https://ci.appveyor.com/project/eidjord/ansatt-adapter-agresso)
+
 Dette adapteret er en del av en POC utarbeidet av et [felles fylkeskommunalt prosjekt FINT](https://github.com/FINTprosjektet/). Adapteret er ansvarlig for kommunikasjonen mellom 
 [felleskomponenten "Ansatt"](https://github.com/FINTprosjektet/ansatt-konsumentgrensesnitt-poc) og Agresso. 
 
