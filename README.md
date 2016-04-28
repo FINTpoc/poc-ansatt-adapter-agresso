@@ -27,3 +27,4 @@ basert på en [modell utarbeidet i samarbeidsprosjektet Veikart hos Difi](https:/
 
 1. For å oppdatere ansatt.cs trengs xsd-modellen for ansatt [ansatt-modell-poc](https://github.com/FINTprosjektet/ansatt-modell-poc)
 2. For å oppdatere event.cs trengs xsd-modellen for event [event-modell-poc](https://github.com/FINTprosjektet/event-modell-poc)
+ 

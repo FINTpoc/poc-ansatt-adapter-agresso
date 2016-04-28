@@ -1,6 +1,0 @@
-## Travis CI Integration
-
-language: csharp
-solution: AnsattAdapterAgresso.sln
-
- 
