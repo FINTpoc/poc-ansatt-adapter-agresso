@@ -1,4 +1,4 @@
-# Ansatt-adapter for Agresso
+# Adapter for Agresso mot ansatt-felleskomponent
 
 Dette adapteret er en del av en POC utarbeidet av et [felles fylkeskommunalt prosjekt FINT](https://github.com/FINTprosjektet/). Adapteret er ansvarlig for kommunikasjonen mellom 
 [felleskomponenten "Ansatt"](https://github.com/FINTprosjektet/ansatt-konsumentgrensesnitt-poc) og Agresso. 
