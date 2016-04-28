@@ -26,7 +26,7 @@ namespace AnsattAdapterAgressoTests
         [TestMethod]
         public void CreateQueueTest()
         {
-            _komponent.CreateQueue("fint:vaf.no:ansatt:in");
+            _komponent.CreateQueue("test");
 
             //var channel = _komponent.GetChannel(); Hvordan finne hvilken kø som er opprettet?
         }
@@ -34,11 +34,13 @@ namespace AnsattAdapterAgressoTests
         [TestMethod]
         public void SendMessageTest()
         {
-            _komponent.SendMessage("testmelding", "test");
-            //Thread.Sleep(1000);
-
-            var melding = _komponent.GetChannel().BasicGet("test", true);
-            Assert.AreEqual("testmelding", Encoding.UTF8.GetString(melding.Body));
+            const string konavn = "integrasjonstest";
+            const string testmelding = "testmelding";
+            _komponent.CreateQueue(konavn);
+            _komponent.SendMessage(testmelding, konavn);
+           
+            var melding = _komponent.GetChannel().BasicGet(konavn, true);
+            Assert.AreEqual(testmelding, Encoding.UTF8.GetString(melding.Body));
         }
     }
 }

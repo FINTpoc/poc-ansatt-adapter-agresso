@@ -30,11 +30,7 @@ public partial class Event {
     
     private System.Nullable<type> typeField;
     
-    private bool typeFieldSpecified;
-    
     private System.Nullable<System.DateTime> timeField;
-    
-    private bool timeFieldSpecified;
     
     private string orgIdField;
     
@@ -74,17 +70,6 @@ public partial class Event {
     }
     
     /// <remarks/>
-    //[System.Xml.Serialization.XmlIgnoreAttribute()]
-    //public bool typeSpecified {
-    //    get {
-    //        return this.typeFieldSpecified;
-    //    }
-    //    set {
-    //        this.typeFieldSpecified = value;
-    //    }
-    //}
-    
-    /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
     public System.Nullable<System.DateTime> time {
         get {
@@ -94,17 +79,6 @@ public partial class Event {
             this.timeField = value;
         }
     }
-    
-    /// <remarks/>
-    //[System.Xml.Serialization.XmlIgnoreAttribute()]
-    //public bool timeSpecified {
-    //    get {
-    //        return this.timeFieldSpecified;
-    //    }
-    //    set {
-    //        this.timeFieldSpecified = value;
-    //    }
-    //}
     
     /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
@@ -118,7 +92,7 @@ public partial class Event {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute("data", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute("data", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
     public object[] data {
         get {
             return this.dataField;
@@ -136,10 +110,10 @@ public partial class Event {
 public enum type {
     
     /// <remarks/>
-    REQUEST,
+    RESPONSE,
     
     /// <remarks/>
-    RESPONSE,
+    REQUEST,
 }
 
 /// <remarks/>

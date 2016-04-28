@@ -53,31 +53,19 @@ public partial class Person : Aktor {
     
     private System.Nullable<kjonn> kjonnField;
     
-    private bool kjonnFieldSpecified;
-    
     private System.Nullable<landkode> statsborgerskapField;
     
-    private bool statsborgerskapFieldSpecified;
-    
     private System.Nullable<System.DateTime> fodselsdatoField;
-    
-    private bool fodselsdatoFieldSpecified;
     
     private string fodestedField;
     
     private System.Nullable<System.DateTime> dodsdatoField;
     
-    private bool dodsdatoFieldSpecified;
-    
     private string dodsstedField;
     
     private System.Nullable<landkode> dodslandField;
     
-    private bool dodslandFieldSpecified;
-    
     private System.Nullable<sivilstand> sivilstandField;
-    
-    private bool sivilstandFieldSpecified;
     
     private Personnavn opprinneligNavnField;
     
@@ -115,17 +103,6 @@ public partial class Person : Aktor {
     }
     
     /// <remarks/>
-    //[System.Xml.Serialization.XmlIgnoreAttribute()]
-    //public bool kjonnSpecified {
-    //    get {
-    //        return this.kjonnFieldSpecified;
-    //    }
-    //    set {
-    //        this.kjonnFieldSpecified = value;
-    //    }
-    //}
-    
-    /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
     public System.Nullable<landkode> statsborgerskap {
         get {
@@ -137,17 +114,6 @@ public partial class Person : Aktor {
     }
     
     /// <remarks/>
-    //[System.Xml.Serialization.XmlIgnoreAttribute()]
-    //public bool statsborgerskapSpecified {
-    //    get {
-    //        return this.statsborgerskapFieldSpecified;
-    //    }
-    //    set {
-    //        this.statsborgerskapFieldSpecified = value;
-    //    }
-    //}
-    
-    /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
     public System.Nullable<System.DateTime> fodselsdato {
         get {
@@ -157,17 +123,6 @@ public partial class Person : Aktor {
             this.fodselsdatoField = value;
         }
     }
-    
-    /// <remarks/>
-    //[System.Xml.Serialization.XmlIgnoreAttribute()]
-    //public bool fodselsdatoSpecified {
-    //    get {
-    //        return this.fodselsdatoFieldSpecified;
-    //    }
-    //    set {
-    //        this.fodselsdatoFieldSpecified = value;
-    //    }
-    //}
     
     /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
@@ -192,17 +147,6 @@ public partial class Person : Aktor {
     }
     
     /// <remarks/>
-    //[System.Xml.Serialization.XmlIgnoreAttribute()]
-    //public bool dodsdatoSpecified {
-    //    get {
-    //        return this.dodsdatoFieldSpecified;
-    //    }
-    //    set {
-    //        this.dodsdatoFieldSpecified = value;
-    //    }
-    //}
-    
-    /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
     public string dodssted {
         get {
@@ -225,17 +169,6 @@ public partial class Person : Aktor {
     }
     
     /// <remarks/>
-    //[System.Xml.Serialization.XmlIgnoreAttribute()]
-    //public bool dodslandSpecified {
-    //    get {
-    //        return this.dodslandFieldSpecified;
-    //    }
-    //    set {
-    //        this.dodslandFieldSpecified = value;
-    //    }
-    //}
-    
-    /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
     public System.Nullable<sivilstand> sivilstand {
         get {
@@ -245,17 +178,6 @@ public partial class Person : Aktor {
             this.sivilstandField = value;
         }
     }
-    
-    /// <remarks/>
-    //[System.Xml.Serialization.XmlIgnoreAttribute()]
-    //public bool sivilstandSpecified {
-    //    get {
-    //        return this.sivilstandFieldSpecified;
-    //    }
-    //    set {
-    //        this.sivilstandFieldSpecified = value;
-    //    }
-    //}
     
     /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
@@ -375,11 +297,7 @@ public partial class Periode {
     
     private System.Nullable<System.DateTime> startField;
     
-    private bool startFieldSpecified;
-    
     private System.Nullable<System.DateTime> sluttField;
-    
-    private bool sluttFieldSpecified;
     
     /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
@@ -393,17 +311,6 @@ public partial class Periode {
     }
     
     /// <remarks/>
-    //[System.Xml.Serialization.XmlIgnoreAttribute()]
-    //public bool startSpecified {
-    //    get {
-    //        return this.startFieldSpecified;
-    //    }
-    //    set {
-    //        this.startFieldSpecified = value;
-    //    }
-    //}
-    
-    /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
     public System.Nullable<System.DateTime> slutt {
         get {
@@ -413,17 +320,6 @@ public partial class Periode {
             this.sluttField = value;
         }
     }
-    
-    /// <remarks/>
-    //[System.Xml.Serialization.XmlIgnoreAttribute()]
-    //public bool sluttSpecified {
-    //    get {
-    //        return this.sluttFieldSpecified;
-    //    }
-    //    set {
-    //        this.sluttFieldSpecified = value;
-    //    }
-    //}
 }
 
 /// <remarks/>
@@ -439,8 +335,6 @@ public partial class Identifikator {
     private string identifikatortypeField;
     
     private System.Nullable<System.DateTime> utstedtDatoField;
-    
-    private bool utstedtDatoFieldSpecified;
     
     private string utstedtAvAutoritetField;
     
@@ -480,17 +374,6 @@ public partial class Identifikator {
     }
     
     /// <remarks/>
-    //[System.Xml.Serialization.XmlIgnoreAttribute()]
-    //public bool utstedtDatoSpecified {
-    //    get {
-    //        return this.utstedtDatoFieldSpecified;
-    //    }
-    //    set {
-    //        this.utstedtDatoFieldSpecified = value;
-    //    }
-    //}
-    
-    /// <remarks/>
     [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
     public string utstedtAvAutoritet {
         get {
@@ -528,7 +411,7 @@ public partial class Aktor {
     private Kontaktinformasjon kontaktinformasjonField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute("identifikatorer", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute("identifikatorer", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
     public Identifikator[] identifikatorer {
         get {
             return this.identifikatorerField;
@@ -557,16 +440,16 @@ public partial class Aktor {
 public enum kjonn {
     
     /// <remarks/>
-    UKJENT,
-    
-    /// <remarks/>
-    MANN,
+    KVINNE,
     
     /// <remarks/>
     UBESTEMT,
     
     /// <remarks/>
-    KVINNE,
+    UKJENT,
+    
+    /// <remarks/>
+    MANN,
 }
 
 /// <remarks/>
@@ -576,16 +459,16 @@ public enum kjonn {
 public enum landkode {
     
     /// <remarks/>
-    DK,
-    
-    /// <remarks/>
     US,
     
     /// <remarks/>
-    NO,
+    DK,
     
     /// <remarks/>
     SE,
+    
+    /// <remarks/>
+    NO,
 }
 
 /// <remarks/>
@@ -595,32 +478,32 @@ public enum landkode {
 public enum sivilstand {
     
     /// <remarks/>
-    UGIFT,
+    SKILT_PARTNER,
     
     /// <remarks/>
     GIFT,
     
     /// <remarks/>
-    SEPARERT,
+    SKILT,
     
     /// <remarks/>
-    UOPPGITT,
-    
-    /// <remarks/>
-    ENKE_ELLER_ENKEMANN,
+    REGISTRERT_PARTNER,
     
     /// <remarks/>
     SEPARERT_PARTNER,
     
     /// <remarks/>
-    SKILT,
-    
-    /// <remarks/>
-    SKILT_PARTNER,
+    ENKE_ELLER_ENKEMANN,
     
     /// <remarks/>
     GJENLEVENDE_PARTNER,
     
     /// <remarks/>
-    REGISTRERT_PARTNER,
+    UOPPGITT,
+    
+    /// <remarks/>
+    SEPARERT,
+    
+    /// <remarks/>
+    UGIFT,
 }
