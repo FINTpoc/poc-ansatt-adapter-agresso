@@ -20,7 +20,7 @@ namespace AnsattAdapterAgressoTests
             Assert.AreEqual("Ole Anders", x.FirstName);
         }
 
-        [TestMethod, Ignore, TestCategory("Slow > 1 min")]
+        [TestMethod, Ignore, TestCategory("Integration test"), TestCategory("Slow > 1 min")]
         public void HentAlleAnsatteTest()
         {
             var ansattAgressoController = new AnsattRessursController();

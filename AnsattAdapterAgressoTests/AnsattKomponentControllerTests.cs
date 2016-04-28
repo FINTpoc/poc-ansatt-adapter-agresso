@@ -16,14 +16,14 @@ namespace AnsattAdapterAgressoTests
             _komponent = new AnsattKomponentController();
         }
 
-        [TestMethod]
+        [TestMethod, TestCategory("Integration test")]
         public void GetConnectionChannelTest()
         {
             var channel = _komponent.GetChannel();
             Assert.IsTrue(channel.IsOpen);
         }
 
-        [TestMethod]
+        [TestMethod, TestCategory("Integration test")]
         public void CreateQueueTest()
         {
             _komponent.CreateQueue("test");
@@ -31,7 +31,7 @@ namespace AnsattAdapterAgressoTests
             //var channel = _komponent.GetChannel(); Hvordan finne hvilken kø som er opprettet?
         }
 
-        [TestMethod]
+        [TestMethod, TestCategory("Integration test")]
         public void SendMessageTest()
         {
             const string konavn = "integrasjonstest";

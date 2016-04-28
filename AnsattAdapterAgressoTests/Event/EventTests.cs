@@ -25,8 +25,9 @@ namespace AnsattAdapterAgressoTests.Event
             var getEmployeeJson = JsonConvert.SerializeObject(getEmployee);
 
             var getEmployeeResponse = JsonConvert.DeserializeObject<global::Event>(getEmployeeJson);
-            //var result = new CompareLogic().Compare(getEmployee, getEmployeeResponse);
-            //Assert.IsTrue(result.AreEqual);
+            Assert.AreEqual(getEmployee.verb, getEmployeeResponse.verb);
+            Assert.AreEqual(getEmployee.type, getEmployeeResponse.type);
+            Assert.AreEqual(getEmployee.id, getEmployeeResponse.id);
         }
 
         [TestMethod]
