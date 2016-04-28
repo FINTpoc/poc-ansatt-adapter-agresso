@@ -3,3 +3,5 @@ configuration: Release
 before_build:
   - cmd: copy AnsattAdapterAgresso\AppExample.config AnsattAdapterAgresso\App.config
   - nuget restore
+
+test: off
