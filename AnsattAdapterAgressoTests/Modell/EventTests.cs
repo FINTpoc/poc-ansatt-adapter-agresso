@@ -57,7 +57,7 @@ namespace AnsattAdapterAgressoTests.Event
         [TestMethod]
         public void ValidateUpdateEmployeeJsonGeneratedFromJavaTest()
         {
-            var javaJson = File.ReadAllText(@"../../Event/updateEmployee.json");
+            var javaJson = File.ReadAllText(@"../../Modell/updateEmployee.json");
             var ev = JsonConvert.DeserializeObject<global::Event>(javaJson);
             var ansatt = JsonConvert.DeserializeObject<Ansatt>(ev.data.First().ToString());
 

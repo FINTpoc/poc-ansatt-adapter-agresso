@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using AnsattAdapterAgresso.AgressoController;
 using AnsattAdapterAgresso.RabbitMqController;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 
@@ -19,6 +20,11 @@ namespace AnsattAdapterAgresso
     {
         static void Main(string[] args)
         {
+            JsonConvert.DefaultSettings = () => new JsonSerializerSettings()
+            {
+                Converters = new List<JsonConverter>() { new StringEnumConverter() }
+            };
+
             var queueName = ConfigurationManager.AppSettings["AnsattKomponentQueue"];
 
             var komponent = new AnsattKomponentController();

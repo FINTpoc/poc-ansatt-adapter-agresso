@@ -10,7 +10,7 @@ namespace AnsattAdapterAgresso.AgressoController
         private readonly string _agressoClient;
         private readonly string _agressoPassword;
         private readonly string _agressoUsername;
-        private UserAdministrationV200702SoapClient _client;
+        private readonly UserAdministrationV200702SoapClient _client = new UserAdministrationV200702SoapClient();
         
         public AgressoController()
         {
